@@ -64,7 +64,7 @@ async function manageStart(skipCookieLoad = false){
 
 
 function setStartUI(){
-    bgImage.src = `../images/08.jpg`;
+    bgImage.src = `images/08.jpg`;
     bgImage.style.cursor = 'pointer';
     cookieWarning.style.display = 'block';
     again.style.display = 'none';
@@ -102,7 +102,7 @@ async function loadFromCookie(){
     if (gameDataCookie){
         const jsonString = decodeURIComponent(gameDataCookie.substring('gameData='.length));
         const data = JSON.parse(jsonString);
-        const response = await fetch('../data/wordsHints.json');
+        const response = await fetch('data/wordsHints.json');
         wordsHints = await response.json();
             
         words = data.wordList;
@@ -135,7 +135,7 @@ function setGameUI(){
     document.querySelector('.keyboardR3').style.display = 'flex'; 
     document.querySelector('.playAgain').style.display = 'block';
     document.querySelector('.youWinLose').style.display = 'block';   
-    bgImage.src = `../images/00.jpg`;
+    bgImage.src = `images/00.jpg`;
     bgImage.style.cursor = 'auto';
     hintBox.style.display = 'flex';
     wordBox.style.display = 'flex';
@@ -188,7 +188,7 @@ function initRope(){
 };
 
 async function getRandomWordList(){
-    const response = await fetch('../data/wordsHints.json');
+    const response = await fetch('data/wordsHints.json');
     wordsHints = await response.json();
     words = Object.keys(wordsHints);
 
@@ -212,17 +212,17 @@ function displayHint(){
         if(char === ' '){
             letterImg = '_';
             html += /*html*/ `<div>
-                                <img src="../images/${letterImg}.png" alt="hint" class="hintLetter">
+                                <img src="images/${letterImg}.png" alt="hint" class="hintLetter">
                             </div>`;
         }else if(char === 'i'){
             letterImg = char;
             html += /*html*/ `<div>
-                                <img src="../images/${letterImg}.png" alt="hint" class="hintLetterI">
+                                <img src="images/${letterImg}.png" alt="hint" class="hintLetterI">
                             </div>`;
         }else{
             letterImg = char;
             html += /*html*/ `<div>
-                                <img src="../images/${letterImg}.png" alt="hint" class="hintLetter">
+                                <img src="images/${letterImg}.png" alt="hint" class="hintLetter">
                             </div>`
         };
     });
@@ -234,13 +234,13 @@ function displayWord(){
     word.split('').forEach(function(char){
         if(char === 'i'){
         html += /*html*/`<div class="letterSpace">
-                            <img src="../images/${char}.png" alt="letter" class="letterI ltr${char}" style="display: none;">
-                            <img src="../images/${Math.floor(Math.random() * 8) + 15}.png" alt="letter space" class="space"> 
+                            <img src="images/${char}.png" alt="letter" class="letterI ltr${char}" style="display: none;">
+                            <img src="images/${Math.floor(Math.random() * 8) + 15}.png" alt="letter space" class="space"> 
                         </div>`                                                     //Plus 15 to align with img file names
         }else{
         html += /*html*/`<div class="letterSpace">
-                            <img src="../images/${char}.png" alt="letter" class="letter ltr${char}" style="display: none;">
-                            <img src="../images/${Math.floor(Math.random() * 8) + 15}.png" alt="letter space" class="space">
+                            <img src="images/${char}.png" alt="letter" class="letter ltr${char}" style="display: none;">
+                            <img src="images/${Math.floor(Math.random() * 8) + 15}.png" alt="letter space" class="space">
                         </div>`                                                     //Plus 15 to align with img file names
         }
     });
@@ -271,7 +271,7 @@ function processGuess(){
             initHandCorrect();                                                      //hand ani
             });
         document.querySelector(`#${guessedLetter}`).innerHTML =                     //place cross on keyboard... plus 11 to align with image file names
-            `<img src="../images/${Math.floor(Math.random() * 3) + 11}.png" alt="cross out guessed letter" class="cross">`;
+            `<img src="images/${Math.floor(Math.random() * 3) + 11}.png" alt="cross out guessed letter" class="cross">`;
         guessedLetters.add(guessedLetter);                                          //add guessed letter to guessedLetter Set.
         if(word.length === correctGuesses){                                         //check for win
             isGameOver = true;
@@ -295,7 +295,7 @@ function processGuess(){
                 again.addEventListener('click', startNewGame);
                 document.addEventListener('keydown', handleEnter);                
             };
-            bgImage.src = `../images/0${incorrectGuesses}.jpg`;                     //change hangman image
+            bgImage.src = `images/0${incorrectGuesses}.jpg`;                     //change hangman image
         };
 }};
 
