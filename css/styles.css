@@ -214,11 +214,16 @@ button {
   display: none;
 }
 
-.results, .cookieWarning {
+.results, .cookieWarning, .answerHolder, #showAnswer {
   font-family: "Courier New", Courier, monospace;
   width: 580px;
   margin: 0 auto;
   text-align: center;
+}
+
+.results > p, .cookieWarning > p, .answerHolder > p {
+  margin-top: 3px;
+  margin-bottom: 0;
 }
 
 @media (max-width: 630px) {
@@ -227,7 +232,7 @@ button {
     height: 120vw;
     border-radius: 15px;
     border: solid 4px white;
-    margin: 0 auto 0 auto;
+    margin: 0 auto;
   }
   .playAgain {
     bottom: 40px;
@@ -325,6 +330,10 @@ button {
   .results {
     width: 90%;
   }
+  .results, .cookieWarning, .answerHolder, #showAnswer {
+    width: 90%;
+    font-size: 0.9rem;
+  }
 }
 @media (max-width: 420px) {
   .keyboardR1 {
@@ -343,5 +352,8 @@ button {
   }
   .handHolder {
     height: 20%;
+  }
+  .results, .cookieWarning, .answerHolder, #showAnswer {
+    font-size: 0.8rem;
   }
 }
